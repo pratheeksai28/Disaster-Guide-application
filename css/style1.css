@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('/image/home.jpg'); 
+    background-image: url('/img/home.jpg'); 
     background-size: cover; /* Ensures the image covers the entire container */
     background-position: center;
     animation: change 60s linear infinite; /* Adjusted animation duration and timing function */
