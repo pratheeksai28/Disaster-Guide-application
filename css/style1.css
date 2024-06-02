@@ -1,0 +1,206 @@
+/* Import the Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/image/home.jpg'); 
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center;
+    animation: change 60s linear infinite; /* Adjusted animation duration and timing function */
+}
+
+
+/* Styles for the header */
+header {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px; /* Decreased top and bottom padding */
+    background: #abbcc9;
+    display: flex;
+    flex-direction: row; /* Adjusted the flex direction to horizontal */
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.DisasterGuide {
+    /* Removed margin-bottom and adjusted font size */
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+    margin-right: auto; /* Pushes "DisasterGuide" to the left */
+}
+
+.navigation {
+    display: flex;
+    align-items: center; /* Center the navigation links vertically */
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a.active:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+a.icon {
+    font-size: 3rem;
+}
+
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em; /* Decreased font size */
+    color: #fff;
+    font-weight: 500;
+    margin-left: 20px; /* Decreased margin */
+    transition: .5s;
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #fff;
+    color: #162938;
+}
+
+/* Styles for the search container */
+.search-container {
+    display: flex;
+    flex-grow: 2; /* Allow the search container to grow and take up available space */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: auto; /* Allow the container to grow based on content */
+    margin-right: 20px;
+}
+
+#search-input {
+    margin-bottom: 4%;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+#search-button {
+    background: none;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* Styles for the search results (initially hidden) */
+.search-results {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 300px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+/* Additional styles for tables and results */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+.table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.result-div {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#data-not-found {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+@keyframes change{
+    0%{
+        background-image: url(/img/home.jpg);
+    }
+    18.666%{
+        background-image: url(/img/home2.jpg);
+    }
+    35.333%{
+        background-image: url(/img/home3.jpg);
+    }
+    50%{
+        background-image: url(/img/home4.jpg);
+    }
+    66.666%{
+        background-image: url(/img/home5.jpg);
+    }
+    83.333%{
+        background-image: url(/img/home6.jpg);
+    }
+    100%{
+        background-image: url(/img/home.jpg); /* Return to the initial image to prevent abrupt changes */
+    }
+}

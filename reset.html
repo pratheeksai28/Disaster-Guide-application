@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="reset.css">
+</head>
+<body>
+    <div class="container" style="box-sizing:20px;">
+        <div class="reset-box">
+            <h2>Reset Your Password</h2>
+            <form action="/reset-password" method="POST">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" name="new-password" required>
+                <label for="confirm-password">Confirm New Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

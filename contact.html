@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="css/style4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        <h2 class="DisasterGuide">Disaster Guide</h2>
+        <nav class="navigation">
+            <a href="home.html" class="active">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="contact.html"  class="active">Contact
+                <span class="icon">
+                    <ion-icon name="call"></ion-icon>
+                </span>
+            </a>
+            <a href="profile.html">
+                <button class="btnLogin-popup">Profile</button>
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <div class="left side">
+                <div class="address details">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="topic">Address</div>
+                    <div class="text-one">Nagadenahalli 562163</div>
+                    <div class="text-two">Bengaluru rural</div>
+                </div>
+                <div class="phone details">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="topic">Phone</div>
+                    <div class="text-one">+91 7032226237</div>
+                    <div class="text-two">11223345566</div>
+                </div>
+                <div class="email details">
+                    <i class="fas fa-envelope"></i>
+                    <div class="topic">Email</div>
+                    <div class="text-one">disasterguideindia@gmail.com</div>
+                    <div class="text-one">info.disaster@outlook.com</div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="topic-text">Send us a message</div>
+                <p>If you have any work from us or any types of queries related to this website you can send us a message from here. It's our pleasure to solve your queries.</p>
+                <form id="submit-to-google-sheet" action="#">
+                    <div class="input-box">
+                        <input type="text" name="name" placeholder="Enter your name">
+                    </div>
+                    <div class="input-box">
+                        <input type="email" name="email" placeholder="Enter your email">
+                    </div>
+                    <div class="input-box message-box">
+                        <textarea name="message" placeholder="Enter your message"></textarea>
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Send">
+                    </div>
+                </form>
+                <div id="msg"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby1aWPoClmEW5wUGVx_zgF01xm4aR8gJmX-3aaawbZ8GbKvtu0lTgKtJ58B6QCWVUcS2A/exec';
+        const form = document.getElementById('submit-to-google-sheet');
+        const msg = document.getElementById("msg");
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully";
+                setTimeout(function(){
+                    msg.innerHTML = "";
+                }, 5000);
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message));
+        });
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
