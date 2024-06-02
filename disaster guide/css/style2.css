@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Poppins' , sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: #abbcc9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+} 
+
+.DisasterGuide {
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width:100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a.active:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+a.icon{
+    font-size: 3rem;
+}
+
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #fff;
+    color: #162938;
+}
+
+h1 {
+    font-size: 80px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.about-us {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.side-by-side {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.who-we-are,
+.vision,
+.mission {
+    flex-basis: calc(33.33% - 20px);
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.8s;
+}
+
+
+.first{
+    background-image: url('/img/img.jpg');
+}
+
+.second{
+    background-image: url('/img/img\ 2.png');
+}
+
+.third{
+    background-image: url('/img/img\ 3.png');
+}
+
+/* Heading styles */
+h1, h2 {
+    margin-bottom: 10px;
+    color: #162938;
+}
+
+/* Paragraph styles */
+p {
+    line-height: 1.5;
+}
+
+/* ... Your existing CSS ... */
+
+/* Hover effect for sections */
+.who-we-are,
+.vision,
+.mission {
+    flex-basis: calc(33.33% - 20px);
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.5s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.first::before,
+.second::before,
+.third::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    transition: transform 0.5s, opacity 0.5s;
+    transform: translateY(0);
+    opacity: 0;
+}
+
+/* Hover effect on sections */
+.who-we-are:hover::before,
+.vision:hover::before,
+.mission:hover::before {
+    transform: translateY(-100%);
+    opacity: 1;
+}
+
+/* Content inside the sections */
+.who-we-are .content,
+.vision .content,
+.mission .content {
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.5s;
+    opacity: 0;
+    transform: translateY(20px); /* Initial position below the container */
+}
+
+/* Hover effect on content */
+.who-we-are:hover .content,
+.vision:hover .content,
+.mission:hover .content {
+    opacity: 1;
+    transform: translateY(0); /* Move content up on hover */
+}
+
+/* Hide the background image on hover */
+.who-we-are:hover,
+.vision:hover,
+.mission:hover {
+    background-image: none;
+}
+
+/* ... Your existing CSS ... */
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .side-by-side {
+        flex-direction: column;
+    }
+
+    .who-we-are,
+    .vision,
+    .mission {
+        flex-basis: 100%;
+    }
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <style>
+    * {
+      margin:0;
+      padding: 0;
+      box-sizing:border-box;
+      font-family: 'Poppins' , sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }    
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 50px;
+      background: #abbcc9;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 99;
+      box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    }
+    .header h1 {
+      font-size: 2em;
+      color: #fff;
+      user-select: none;
+      margin: 0; /* Remove default margin */
+    }
+    .header .logout-btn {
+      width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em; /* Decreased font size */
+    color: #fff;
+    font-weight: 500;
+    margin-left: 20px; /* Decreased margin */
+    transition: .5s;
+    }
+    .header .logout-btn:hover {
+      background: #fff;
+      color: #162938;    
+    }
+    .profile-container {
+      max-width: 600px;
+      margin: 150px auto 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+    .profile-details {
+      margin-bottom: 15px;
+    }
+    .profile-details label {
+      font-weight: bold;
+    }
+    .form-input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .form-submit {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .form-submit:hover {
+      background-color: #0056b3;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Disaster Guide</h1>
+    <button id="logout-btn" class="form-submit logout-btn">Logout</button>
+  </div>
+  <div class="profile-container">
+    <div id="display-mode">
+      <h1>User Profile</h1>
+      <div class="profile-details">
+        <label>Name: </label>
+        <span id="display-name">John Doe</span>
+      </div>
+      <div class="profile-details">
+        <label>Contact Information: </label>
+        <span id="display-contact">john.doe@example.com</span>
+      </div>
+      <div class="profile-details">
+        <label>Location: </label>
+        <span id="display-location">New York</span>
+      </div>
+      <div class="profile-details">
+        <label>Pincode: </label>
+        <span id="display-pincode">123456</span>
+      </div>
+      <div class="profile-details">
+        <label>Age: </label>
+        <span id="display-age">30</span>
+      </div>
+      <div class="profile-details">
+        <label>Gender: </label>
+        <span id="display-gender">Male</span>
+      </div>
+      <button id="edit-btn" class="form-submit">Edit</button>
+    </div>
+    <div id="edit-mode" class="hidden">
+      <h1>Edit Profile</h1>
+      <form id="profileForm">
+        <div class="profile-details">
+          <label for="name">Name: </label>
+          <input type="text" id="name" name="name" class="form-input" required>
+        </div>
+        <div class="profile-details">
+          <label for="contact">Contact Information: </label>
+          <input type="text" id="contact" name="contact" class="form-input" required>
+        </div>
+        <div class="profile-details">
+          <label for="location">Location: </label>
+          <input type="text" id="location" name="location" class="form-input" required>
+        </div>
+        <div class="profile-details">
+          <label for="pincode">Pincode: </label>
+          <input type="text" id="pincode" name="pincode" class="form-input" required>
+        </div>
+        <div class="profile-details">
+          <label for="age">Age: </label>
+          <input type="number" id="age" name="age" class="form-input" required>
+        </div>
+        <div class="profile-details">
+          <label for="gender">Gender: </label>
+          <select id="gender" name="gender" class="form-input" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button type="button" id="save-btn" class="form-submit">Save</button>
+        <button type="button" id="cancel-btn" class="form-submit">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for enabling edit and save functionality
+    document.getElementById('edit-btn').addEventListener('click', function() {
+      document.getElementById('display-mode').classList.add('hidden');
+      document.getElementById('edit-mode').classList.remove('hidden');
+    });
+
+    document.getElementById('cancel-btn').addEventListener('click', function() {
+      document.getElementById('edit-mode').classList.add('hidden');
+      document.getElementById('display-mode').classList.remove('hidden');
+    });
+
+    document.getElementById('save-btn').addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      const contact = document.getElementById('contact').value;
+      const location = document.getElementById('location').value;
+      const pincode = document.getElementById('pincode').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+
+      document.getElementById('display-name').innerText = name;
+      document.getElementById('display-contact').innerText = contact;
+      document.getElementById('display-location').innerText = location;
+      document.getElementById('display-pincode').innerText = pincode;
+      document.getElementById('display-age').innerText = age;
+      document.getElementById('display-gender').innerText = gender;
+
+      document.getElementById('edit-mode').classList.add('hidden');
+      document.getElementById('display-mode').classList.remove('hidden');
+    });
+
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', function() {
+      // Redirect to the index page
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
